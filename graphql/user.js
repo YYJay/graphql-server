@@ -1,7 +1,7 @@
 const got = require('got')
 
-const getUser = async(username, password) => {
-  console.log(username, password);
+const getUser = async(root, parames) => {
+  const { username, password } = parames
   const options = {
     mode: 'no-cors',
     json: true,
@@ -13,12 +13,12 @@ const getUser = async(username, password) => {
   const url = `http://192.169.2.19:35434/iam/actions/login`
   const res = await got.post(url, options)
   const { token } = res.body
-  return token
+  return res.body
 }
 
 export const User = `
   extend type Query {
-    user(account: String!, password: String! ): User
+    user(username: String!, password: String! ): User
   }
   type User {
     token: String
