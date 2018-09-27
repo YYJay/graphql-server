@@ -5,8 +5,8 @@
 * visit http://localhost:3007/graphiql
 * try input
 `query {
-	 users(account: "chen2@163.com", passWord: "Mi888888") {
-    account
+	 user(username: "chen2@163.com", password: "Mi888888") {
+    token
   }
 }`
 
