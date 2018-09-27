@@ -3,7 +3,6 @@ const got = require('got')
 const getUser = async(root, parames) => {
   const { username, password } = parames
   const options = {
-    mode: 'no-cors',
     json: true,
     body: {
       password,
