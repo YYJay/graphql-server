@@ -16,7 +16,9 @@ visit https://codesandbox.io/s/pm777z1r1q
 ## react-apollo介绍
 * 特性
 	* 轻松管理数据, 只需要一个`<Query>`组件
-		````
+
+		````js
+
 		const GET_DOGS = gql`
 	  query GetDogs {
 	    dogs {
@@ -37,6 +39,7 @@ visit https://codesandbox.io/s/pm777z1r1q
 	  </Query>
 	)
 	````
+
 	* 自带loading error
 * 开始
 	-  安装依赖
