@@ -62,7 +62,7 @@ visit https://codesandbox.io/s/pm777z1r1q
   		.then(result => console.log(result));
 		````
 	- 重新查询 refetch
-		````
+		````js
 		const DogPhoto = ({ breed }) => (
 		<Query
 		    query={GET_DOG_PHOTO}
@@ -88,22 +88,22 @@ visit https://codesandbox.io/s/pm777z1r1q
 		````
 
 	- 手动查询(太冗长, 不建议使用), 使用ApolloConsumer组件并直接调用client.query()。
-		````
+		````js
     <ApolloConsumer>
-      {client => (
-        <div>
-          <button
-            onClick={async () => {
-              const { data } = await client.query({
-                query: GET_DOG_PHOTO,
-                variables: { breed: "bulldog" }
-              });
-              this.onDogFetched(data.dog);
-            }}
-          >
-            Click me!
-          </button>
-        </div>
-      )}
+		    {client => (
+		      <div>
+		        <button
+		          onClick={async () => {
+		            const { data } = await client.query({
+		              query: GET_DOG_PHOTO,
+		              variables: { breed: "bulldog" }
+		            });
+		            this.onDogFetched(data.dog);
+		          }}
+		        >
+		          Click me!
+		        </button>
+		      </div>
+		    )}
     </ApolloConsumer>
 		````
