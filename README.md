@@ -20,25 +20,25 @@ visit https://codesandbox.io/s/pm777z1r1q
 		````js
 
 		const GET_DOGS = gql`
-	  query GetDogs {
-	    dogs {
-	      id
-	      name
-	    }
-	  }
-	`;
+		query GetDogs {
+		    dogs {
+		      id
+		      name
+		    }
+		  }
+		`;
 
-	const GoodDogsBrent = () => (
-	  <Query query={GET_DOGS}>
-	    {({ loading, error, data }) => {
-	      if (error) return <Error />
-	      if (loading || !data) return <Fetching />
+		const GoodDogsBrent = () => (
+		  <Query query={GET_DOGS}>
+		    {({ loading, error, data }) => {
+		      if (error) return <Error />
+		      if (loading || !data) return <Fetching />
 
-	      return <DogList dogs={data.dogs} />
-	    }}
-	  </Query>
-	)
-	````
+		      return <DogList dogs={data.dogs} />
+		    }}
+		  </Query>
+		)
+		````
 
 	* 自带loading error
 * 开始
@@ -47,7 +47,7 @@ visit https://codesandbox.io/s/pm777z1r1q
 		npm install apollo-boost react-apollo graphql --save
 		````
 	- 创建客户端
-		````
+		````js
 		import gql from "graphql-tag";
 		client
 		.query({
@@ -59,31 +59,31 @@ visit https://codesandbox.io/s/pm777z1r1q
 		    }
 		  `
 		})
-  	.then(result => console.log(result));
+  		.then(result => console.log(result));
 		````
 	- 重新查询 refetch
 		````
 		const DogPhoto = ({ breed }) => (
-	  <Query
-	    query={GET_DOG_PHOTO}
-	    variables={{ breed }}
-	    skip={!breed}
-	  >
-	    {({ loading, error, data, refetch }) => {
-	      if (loading) return null;
-	      if (error) return `Error!: ${error}`;
+		<Query
+		    query={GET_DOG_PHOTO}
+		    variables={{ breed }}
+		    skip={!breed}
+		  >
+		    {({ loading, error, data, refetch }) => {
+		      if (loading) return null;
+		      if (error) return `Error!: ${error}`;
 
-	      return (
-	        <div>
-	          <img
-	            src={data.dog.displayImage}
-	            style={{ height: 100, width: 100 }}
-	          />
-	          <button onClick={() => refetch()}>Refetch!</button>
-	        </div>
-	      );
-	    }}
-	  </Query>
+		      return (
+			<div>
+			  <img
+			    src={data.dog.displayImage}
+			    style={{ height: 100, width: 100 }}
+			  />
+			  <button onClick={() => refetch()}>Refetch!</button>
+			</div>
+		      );
+		    }}
+		  </Query>
 		);
 		````
 
